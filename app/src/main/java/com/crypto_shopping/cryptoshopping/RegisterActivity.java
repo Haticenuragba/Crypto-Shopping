@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
+
                 if (task.isSuccessful()) {
                     new AlertDialog.Builder(RegisterActivity.this)
                             .setTitle("Success")
@@ -82,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                             })
                             .show();
                 } else {
+
                     Toast.makeText(RegisterActivity.this, "An error occured", Toast.LENGTH_SHORT).show();
                 }
             }

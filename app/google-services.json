@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "132151487368-re83gtbul5ejqn1s76m09ap47jgv67br.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crypto_shopping.cryptoshopping",
+            "certificate_hash": "61b7e4e81982e0e1611b89e9c6dd02b3e2301e79"
+          }
+        },
+        {
           "client_id": "132151487368-ur90lt2grso84an454tm1ptfe7vs4rvq.apps.googleusercontent.com",
           "client_type": 3
         }

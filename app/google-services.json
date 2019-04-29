@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "132151487368",
+    "firebase_url": "https://cryptoshoppingauth.firebaseio.com",
+    "project_id": "cryptoshoppingauth",
+    "storage_bucket": "cryptoshoppingauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132151487368:android:fdc3f3a166f2381b",
+        "android_client_info": {
+          "package_name": "com.crypto_shopping.cryptoshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132151487368-ur90lt2grso84an454tm1ptfe7vs4rvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALwWpwYB73M4SqYT7-rioi5qTZYORFv24"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132151487368-ur90lt2grso84an454tm1ptfe7vs4rvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

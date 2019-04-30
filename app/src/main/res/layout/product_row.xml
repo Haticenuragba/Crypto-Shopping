@@ -43,14 +43,7 @@
             android:textSize="22sp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/productDescription"
-            android:text="Description"
-            android:textColor="#000"
-            android:textSize="15sp"
-            />
+
 
 
 

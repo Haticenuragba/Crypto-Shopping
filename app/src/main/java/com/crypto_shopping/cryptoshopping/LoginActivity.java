@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private SessionManager mSessionManager = null;
     private FirebaseAuth mFirebaseAuth;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

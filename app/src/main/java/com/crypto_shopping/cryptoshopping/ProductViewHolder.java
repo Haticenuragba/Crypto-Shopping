@@ -25,17 +25,17 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void setDetails(Context mContext, String title, int Price, String description, String image){
+    public void setDetails(Context mContext, String title, int Price, String image){
 
         TextView productTitle = productView.findViewById(R.id.productTitle);
-        TextView productDescription = productView.findViewById(R.id.productDescription);
         ImageView productImage = productView.findViewById(R.id.productImage);
         TextView productPrice = productView.findViewById(R.id.productPrice);
 
-        productTitle.setText(title);
-        productDescription.setText(description);
+        productTitle.setText(title );
         productPrice.setText(Integer.toString(Price)+"ADA");
         Picasso.get().load(image).into(productImage);
+
+
 
 
 

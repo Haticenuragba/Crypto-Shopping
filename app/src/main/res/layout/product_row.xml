@@ -23,25 +23,51 @@
             android:text="Title"
             android:textColor="#000"
             android:textSize="22sp"
+            android:layout_margin="8dp"
             android:textStyle="bold"/>
         
         <ImageView
-            android:layout_width="360dp"
-            android:layout_height="270dp"
+            android:layout_width="340dp"
+            android:layout_height="255dp"
             android:id="@+id/productImage"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:layout_margin="8dp"
 
             />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/productPrice"
-            android:text="Price"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/productPrice"
+                android:text="Price"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_margin="8dp"/>
+            <ImageView
+                android:id="@+id/cartImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_shopping_cart"
+                android:layout_margin="8dp"
+                />
+            <ImageView
+                android:id="@+id/favouritesImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_heart_empty"
+                android:layout_margin="8dp"
+                />
+
+
+
+        </LinearLayout>
 
 
 

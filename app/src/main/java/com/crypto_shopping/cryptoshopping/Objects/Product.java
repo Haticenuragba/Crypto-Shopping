@@ -4,17 +4,17 @@ public class Product {
 
 
 
-    private String image,title,desc;
-    private int price, productID;
+    private String image,title,desc,productID;
+    private int price;
 
 
 
 
-    public int getProductID() {
+    public String  getProductID() {
         return productID;
     }
 
-    public void setProductID(int id) {
+    public void setProductID(String id) {
         this.productID= id;
     }
 

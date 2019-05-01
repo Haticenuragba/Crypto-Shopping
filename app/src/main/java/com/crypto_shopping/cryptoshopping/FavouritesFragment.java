@@ -27,7 +27,6 @@ public class FavouritesFragment extends Fragment {
 
 
     ProductViewHolder productV;
-    FirebaseRecyclerAdapter<Product, ProductViewHolder> firebaseRecyclerAdapter;
 
     @Nullable
 
@@ -53,7 +52,7 @@ public class FavouritesFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("Product");
+        mRef = mFirebaseDatabase.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Favourites");
 
 
     }
@@ -63,10 +62,7 @@ public class FavouritesFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mRecyclerView.setAdapter(firebaseRecyclerAdapter);
-
-
-      firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(
+        FirebaseRecyclerAdapter<Product, ProductViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>(
 
                 Product.class,
                 R.layout.product_row,
@@ -85,18 +81,13 @@ public class FavouritesFragment extends Fragment {
                 productSnapshot.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.exists()){
+                        if(dataSnapshot.exists()  ){
 
                             productV.setDetails(getActivity().getApplicationContext(), product, true);
 
                         }
                         else {
-                            RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) productV.productView.getLayoutParams();
-
-                            productV.productView.setVisibility(View.GONE);
-                            layoutParams.setMargins(0, 0, 0, 0);
-
-                            productV.productView.setLayoutParams(layoutParams);
+                            productV.setDetails(getActivity().getApplicationContext(),product, false);
                         }
                     }
 

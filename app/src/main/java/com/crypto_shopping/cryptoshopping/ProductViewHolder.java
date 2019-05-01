@@ -20,7 +20,6 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     FirebaseDatabase mFirebaseDatabase;
     Product productObject;
     boolean isFav;
-
     TextView productTitle;
     ImageView productImage;
     TextView productPrice;
@@ -40,7 +39,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void setDetails(Context mContext, Product product,  boolean isFavourite){
+    public void setDetails(Context mContext, final Product product, boolean isFavourite){
          isFav = isFavourite;
          productObject = product;
          productTitle = productView.findViewById(R.id.productTitle);
@@ -75,9 +74,14 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
                 }
                 else{
                     favouritesImage.setImageResource(R.drawable.ic_heart_filled);
-                    DatabaseReference kRef = mFirebaseDatabase.getReference("Users");
-                    kRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .child("Favourites").child(productObject.getProductID()).setValue(true);
+                    DatabaseReference kRef = mFirebaseDatabase.getReference("Users")
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .child("Favourites").child(productObject.getProductID());
+                    kRef.child("desc").setValue(product.getDesc());
+                    kRef.child("title").setValue(product.getTitle());
+                    kRef.child("price").setValue(product.getPrice());
+                    kRef.child("image").setValue(product.getImage());
+                    kRef.child("productID").setValue(product.getProductID());
                     isFav = true;
 
                 }

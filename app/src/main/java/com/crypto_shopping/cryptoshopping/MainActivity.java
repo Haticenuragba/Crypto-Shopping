@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -42,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new CartFragment();
                     break;
                 case R.id.navigation_account:
-                    Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
-                    startActivity(intent);
-                   // selectedFragment = new AccountFragment();
+
+                    selectedFragment = new AccountFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

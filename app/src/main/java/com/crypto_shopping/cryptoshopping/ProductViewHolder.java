@@ -41,12 +41,12 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setDetails(final Context mContext, final Product product, final boolean isFavourite){
-         isFav = isFavourite;
-         productObject = product;
-         productTitle = productView.findViewById(R.id.productTitle);
-         productImage = productView.findViewById(R.id.productImage);
-         productPrice = productView.findViewById(R.id.productPrice);
-         favouritesImage = productView.findViewById(R.id.favouritesImage);
+        isFav = isFavourite;
+        productObject = product;
+        productTitle = productView.findViewById(R.id.productTitle);
+        productImage = productView.findViewById(R.id.productImage);
+        productPrice = productView.findViewById(R.id.productPrice);
+        favouritesImage = productView.findViewById(R.id.favouritesImage);
 
 
 
@@ -99,7 +99,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
                 Intent productDetailIntent = new Intent(mContext, ProductDetailActivity.class);
                 productDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 productDetailIntent.putExtra("PRODUCT", product);
-                productDetailIntent.putExtra("IS_FAVOURITE", isFavourite);
+                productDetailIntent.putExtra("IS_FAVOURITE", isFav);
                 mContext.startActivity(productDetailIntent);
             }
         });

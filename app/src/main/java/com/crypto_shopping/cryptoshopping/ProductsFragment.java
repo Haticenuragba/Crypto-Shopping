@@ -47,7 +47,7 @@ public class ProductsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView=getActivity().findViewById(R.id.productsRecyclerView);
-        mRecyclerView.setHasFixedSize(true);
+
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 

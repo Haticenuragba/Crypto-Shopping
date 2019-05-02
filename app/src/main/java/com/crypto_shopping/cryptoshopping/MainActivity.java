@@ -1,5 +1,6 @@
 package com.crypto_shopping.cryptoshopping;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -41,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new CartFragment();
                     break;
                 case R.id.navigation_account:
-                    selectedFragment = new AccountFragment();
+                    Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
+                    startActivity(intent);
+                   // selectedFragment = new AccountFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

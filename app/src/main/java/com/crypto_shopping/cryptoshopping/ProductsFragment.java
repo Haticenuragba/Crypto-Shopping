@@ -76,6 +76,7 @@ public class ProductsFragment extends Fragment {
                 DatabaseReference productSnapshot =  kRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                         .child("Favourites").child(product.getProductID());
 
+
                 productV = productViewHolder;
 
                 productSnapshot.addListenerForSingleValueEvent(new ValueEventListener() {

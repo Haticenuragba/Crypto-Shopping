@@ -50,13 +50,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_margin="8dp"/>
-            <ImageView
-                android:id="@+id/cartImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_shopping_cart"
-                android:layout_margin="8dp"
-                />
+
             <ImageView
                 android:id="@+id/favouritesImage"
                 android:layout_width="wrap_content"

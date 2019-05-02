@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDetailActivity">
+
+
+
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/productDetailTitle"
+                    android:text="Title"
+                    android:textColor="#000"
+                    android:textSize="22sp"
+                    android:layout_margin="8dp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/favouritesDetailImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_heart_empty"
+                    android:layout_margin="8dp"
+                    />
+                </LinearLayout>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="340dp"
+                    android:layout_height="255dp"
+                    android:id="@+id/productDetailImage"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:layout_margin="8dp"
+
+                    >
+
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_margin="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/productDetailPrice"
+                        android:text="Price"
+                        android:textColor="#000"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="center"
+
+                        />
+                    <LinearLayout
+                        android:layout_marginStart="52dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_minus"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:layout_margin="8dp"/>
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus"
+                        android:layout_margin="8dp"/>
+                    <Button
+                        android:id="@+id/addToCartButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add to Cart"
+                        android:layout_margin="8dp"/>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/productDescription"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:layout_margin="8dp"/>
+
+
+
+
+
+
+
+            </LinearLayout>
+       </ScrollView>
+
+
+
+
+</RelativeLayout>

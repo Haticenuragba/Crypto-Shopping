@@ -1,6 +1,7 @@
 package com.crypto_shopping.cryptoshopping;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -39,13 +40,14 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
 
-    public void setDetails(Context mContext, final Product product, boolean isFavourite){
+    public void setDetails(final Context mContext, final Product product, final boolean isFavourite){
          isFav = isFavourite;
          productObject = product;
          productTitle = productView.findViewById(R.id.productTitle);
          productImage = productView.findViewById(R.id.productImage);
          productPrice = productView.findViewById(R.id.productPrice);
          favouritesImage = productView.findViewById(R.id.favouritesImage);
+
 
 
         if(isFavourite){
@@ -56,7 +58,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
             favouritesImage.setImageResource(R.drawable.ic_heart_empty);
         }
 
-        productTitle.setText(product.getTitle() );
+        productTitle.setText(product.getTitle());
         productPrice.setText(Integer.toString(product.getPrice())+" ADA");
         Picasso.get().load(product.getImage()).into(productImage);
 
@@ -89,6 +91,18 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         });
 
 
+
+        productView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent productDetailIntent = new Intent(mContext, ProductDetailActivity.class);
+                productDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                productDetailIntent.putExtra("PRODUCT", product);
+                productDetailIntent.putExtra("IS_FAVOURITE", isFavourite);
+                mContext.startActivity(productDetailIntent);
+            }
+        });
     }
 
 

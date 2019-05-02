@@ -1,6 +1,8 @@
 package com.crypto_shopping.cryptoshopping.Objects;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
 
 
 

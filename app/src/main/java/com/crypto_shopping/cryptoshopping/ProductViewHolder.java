@@ -41,6 +41,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
     public void setDetails(final Context mContext, final Product product, final boolean isFavourite){
+
+
         isFav = isFavourite;
         productObject = product;
         productTitle = productView.findViewById(R.id.productTitle);

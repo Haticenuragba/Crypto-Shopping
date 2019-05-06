@@ -12,6 +12,7 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crypto_shopping.cryptoshopping.Objects.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,6 +94,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     kRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .child("Favourites").child(product.getProductID()).removeValue();
                     isFavourite = false;
+                    Toast.makeText(getApplicationContext(), product.getTitle() + " removed from favourites", Toast.LENGTH_SHORT).show();
+
                 }
                 else{
                     favouritesImage.setImageResource(R.drawable.ic_heart_filled);
@@ -105,6 +108,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     kRef.child("image").setValue(product.getImage());
                     kRef.child("productID").setValue(product.getProductID());
                     isFavourite = true;
+                    Toast.makeText(getApplicationContext(), product.getTitle() + " added to favourites", Toast.LENGTH_SHORT).show();
+
 
                 }
             }
@@ -138,6 +143,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 kRef.child("image").setValue(product.getImage());
                 kRef.child("productID").setValue(product.getProductID());
                 kRef.child("amount").setValue(selectedAmount);
+                Toast.makeText(getApplicationContext(), product.getTitle() + " added to cart", Toast.LENGTH_SHORT).show();
+
 
 
 

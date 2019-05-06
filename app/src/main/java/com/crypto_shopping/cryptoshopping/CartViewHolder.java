@@ -65,6 +65,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
         String[] items = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_dropdown_item, items);
         amountSpinner.setAdapter(adapter);
+        amountSpinner.setSelection(product.getAmount() - 1);
 
 
         amountSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

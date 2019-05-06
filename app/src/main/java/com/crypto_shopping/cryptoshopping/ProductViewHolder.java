@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.crypto_shopping.cryptoshopping.Objects.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,7 +54,6 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
 
 
         if(isFavourite){
-            Log.v("heyy", "heyy");
             favouritesImage.setImageResource(R.drawable.ic_heart_filled);
         }
         else{
@@ -73,8 +73,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
                     DatabaseReference kRef = mFirebaseDatabase.getReference("Users");
                     kRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .child("Favourites").child(productObject.getProductID()).removeValue();
-                    Log.v("aaaa", "girdi");
                     isFav = false;
+                    Toast.makeText(mContext, product.getTitle() + " removed from favourites", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     favouritesImage.setImageResource(R.drawable.ic_heart_filled);
@@ -87,6 +87,8 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
                     kRef.child("image").setValue(product.getImage());
                     kRef.child("productID").setValue(product.getProductID());
                     isFav = true;
+                    Toast.makeText(mContext, product.getTitle() + " added to favourites", Toast.LENGTH_SHORT).show();
+
 
                 }
             }

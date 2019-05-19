@@ -75,6 +75,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
                 selectedAmount = position + 1;
                 product.setAmount(selectedAmount);
                 productPrice.setText(Integer.toString(product.getPrice()*product.getAmount())+" ADA");
+                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").child(product.getProductID()).child("amount").setValue(selectedAmount);
 
             }
 
@@ -83,6 +84,8 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
                 selectedAmount = product.getAmount();
                 productPrice.setText(Integer.toString(product.getPrice()*product.getAmount())+" ADA");
             }
+
+
         });
 
 

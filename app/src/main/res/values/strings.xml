@@ -19,4 +19,6 @@
     <string name="amount">Amount</string>
     <string name="price">Price</string>
     <string name="price2">Price :</string>
+    <string name="proceed_to_checkout">PROCEED TO CHECKOUT</string>
+    <string name="total_price">Total Price:</string>
 </resources>

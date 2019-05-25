@@ -21,4 +21,8 @@
     <string name="price2">Price :</string>
     <string name="proceed_to_checkout">PROCEED TO CHECKOUT</string>
     <string name="total_price">Total Price:</string>
+    <string name="xrp_deposit_address">XRP Deposit Address</string>
+    <string name="xrp_deposit_tag">XRP Deposit Tag</string>
+    <string name="send_only_xrp_to_this_deposit_address_sending_any_other_coin_or_token_to_this_address_may_result_in_the_loss_of_your_deposit_both_a_tag_and_an_address_are_required_to_successfully_deposit_your_xrp_to_binance">Send only XRP to this deposit address. Sending any other coin or token to this address may result in the loss of your deposit.Both a Tag and an Address are required to successfully deposit your XRP to Binance</string>
+    <string name="i_understand_continue">I understand, continue</string>
 </resources>

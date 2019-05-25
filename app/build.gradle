@@ -34,6 +34,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.2.1'
     implementation 'com.firebaseui:firebase-ui-database:0.4.0'
     implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 
 apply plugin: 'com.google.gms.google-services'

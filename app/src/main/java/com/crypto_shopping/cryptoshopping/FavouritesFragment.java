@@ -28,7 +28,6 @@ public class FavouritesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView=getActivity().findViewById(R.id.favouritesRecyclerView);
-        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
     }
 

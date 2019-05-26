@@ -66,6 +66,8 @@ public class PaymentActivity extends AppCompatActivity {
     private String transactionID;
     private String orderInfo;
 
+    String fullAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         LoadData(URL_API);
 
+
+        fullAddress = intent.getStringExtra("SHIPPING_ADDRESS");
 
 
 
@@ -164,7 +168,7 @@ public class PaymentActivity extends AppCompatActivity {
                         if(dataSnapshot.exists()){
                             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                                if(snapshot.child("amount").getValue()!=null && snapshot.child("price").getValue()!=null){
+                                if(snapshot.child("amount").getValue()!=null && snapshot.child("price").getValue() != null){
 
                                     orderInfo += snapshot.child("amount").getValue() +" X "+ snapshot.child("title").getValue() +"\n";
 
@@ -175,7 +179,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("orderInfo").setValue(orderInfo);
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("transactionID").setValue(transactionID);
-
+                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("fullAddress").setValue(fullAddress);
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").removeValue();
                         Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
                         startActivity(intent);

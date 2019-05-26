@@ -42,7 +42,6 @@ public class CartFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView=getActivity().findViewById(R.id.cartRecyclerView);
-        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         totalPriceText = getActivity().findViewById(R.id.totalPrice);
         proceedToCheckOutButton = getActivity().findViewById(R.id.proceedToCheckOut);
@@ -50,7 +49,7 @@ public class CartFragment extends Fragment {
         proceedToCheckOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PaymentActivity.class);
+                Intent intent = new Intent(getActivity(), SelectAddressActivity.class);
                 intent.putExtra("AMOUNT_TO_PAY",  totalAmount);
                 startActivity(intent);
             }

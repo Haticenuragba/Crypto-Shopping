@@ -44,7 +44,6 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView=getActivity().findViewById(R.id.ordersRecyclerView);
-        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
     }
 
@@ -104,7 +103,6 @@ public class AccountFragment extends Fragment {
                 String URL_API="https://bitvolo.com/rest/?transaction_id="+order.getTransactionID()+"&reference_number=&hash=&api_key=51e3987f2fad88f177a92782190ff0a30c3cc5bfcfd15ae7333a069cb73c01&method=get_transaction_info";
                 LoadData(URL_API);
                 viewHolder.setDetails(getActivity().getApplicationContext(), order);
-
 
 
             }

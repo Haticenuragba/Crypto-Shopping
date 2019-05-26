@@ -23,7 +23,9 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".PaymentActivity"></activity>
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".SelectAddressActivity" />
+        <activity android:name=".FinishPaymentActivity"></activity>
     </application>
 
 </manifest>

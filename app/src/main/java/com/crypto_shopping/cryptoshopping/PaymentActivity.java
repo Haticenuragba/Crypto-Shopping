@@ -66,6 +66,8 @@ public class PaymentActivity extends AppCompatActivity {
     private String transactionID;
     private String orderInfo;
 
+    String fullAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,73 +75,36 @@ public class PaymentActivity extends AppCompatActivity {
         initiliazeViews();
         intent = getIntent();
         totalAmount = intent.getLongExtra("AMOUNT_TO_PAY", 999000000);
-        URL_API="https://bitvolo.com/rest/?reference_number="+FirebaseAuth.getInstance().getCurrentUser().getUid()+
-        "&coin=XRP&requested_currency=XRP&requested_amount="+ totalAmount+
-                "&ipn_url=&custom_field=&api_key=51e3987f2fad88f177a92782190ff0a30c3cc5bfcfd15ae7333a069cb73c01&method=create_transaction";
-
-        LoadData(URL_API);
-
-
-
-
-    }
-
-    public void LoadData(String URL_DATA){
-        final ProgressDialog progressDialog =new ProgressDialog(this);
-        progressDialog.setMessage("Redirecting...");
-        progressDialog.show();
-        StringRequest myRequest = new StringRequest(Request.Method.GET, URL_DATA, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-
-                    JSONObject jsonobject=new JSONObject(response).getJSONObject("data");
-
-                    depositAddress.setText(jsonobject.getString("destination_address"));
-                    depositTag.setText(jsonobject.getString("destination_tag"));
-                    transactionID = jsonobject.getString("transaction_id");
-                    progressDialog.dismiss();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.v("ERROR",error.getMessage());
-
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(myRequest);
+        depositAddress.setText(intent.getStringExtra("DEPOSIT_ADDRESS"));
+        depositTag.setText(intent.getStringExtra("DEPOSIT_TAG"));
+        fullAddress = intent.getStringExtra("SHIPPING_ADDRESS");
 
 
 
     }
+
+
 
 
 
     public void initiliazeViews(){
 
-    depositAddress = findViewById(R.id.depositAddress);
-    depositTag = findViewById(R.id.depositTag);
-    copy1 = findViewById(R.id.copy1);
-    copy2 = findViewById(R.id.copy2);
-    completePayment = findViewById(R.id.completePayment);
+        depositAddress = findViewById(R.id.depositAddress);
+        depositTag = findViewById(R.id.depositTag);
+        copy1 = findViewById(R.id.copy1);
+        copy2 = findViewById(R.id.copy2);
+        completePayment = findViewById(R.id.completePayment);
 
-    copy1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("address", depositAddress.getText());
-            clipboard.setPrimaryClip(clip);
-        }
-    });
+        copy1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("address", depositAddress.getText());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(), "Deposit address is copied to clipboard.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         copy2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +112,8 @@ public class PaymentActivity extends AppCompatActivity {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("tag", depositTag.getText());
                 clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(), "Deposit tag is copied to clipboard.", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -155,41 +122,10 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").addListenerForSingleValueEvent(new ValueEventListener() {
 
-
-
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        orderInfo = "";
-                        if(dataSnapshot.exists()){
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                                if(snapshot.child("amount").getValue()!=null && snapshot.child("price").getValue()!=null){
-
-                                    orderInfo += snapshot.child("amount").getValue() +" X "+ snapshot.child("title").getValue() +"\n";
-
-                                }
-
-                            }
-                        }
-
-                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("orderInfo").setValue(orderInfo);
-                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("transactionID").setValue(transactionID);
-
-                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").removeValue();
-                        Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(getApplicationContext(), "Your order added", Toast.LENGTH_SHORT).show();
-
-                    }
-
-
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
-
+                Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "You can check your order from orders page.", Toast.LENGTH_SHORT).show();
 
 
 

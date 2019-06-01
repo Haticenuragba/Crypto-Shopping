@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SpinnerTheme">
+        <item name="colorControlNormal">#cc9e16</item>
+        <item name="colorControlActivated">#cc9e16</item>
+        <item name="colorControlHighlight">#1e90ff</item>
+    </style>
+
 </resources>

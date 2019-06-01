@@ -8,10 +8,25 @@
     tools:context=".ProductDetailActivity">
 
 
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_cs_logo"
+            android:onClick="returnHomePageFromDetail"
+
+            />
+    </android.support.v7.widget.Toolbar>
 
        <ScrollView
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+           android:layout_height="wrap_content"
+           android:layout_marginTop="?attr/actionBarSize">
 
 
             <LinearLayout
@@ -84,7 +99,7 @@
                             android:id="@+id/amountSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:drawable/btn_dropdown"
+                            android:theme="@style/SpinnerTheme"
                             android:spinnerMode="dropdown"
                             android:layout_gravity="center"/>
 
@@ -92,7 +107,8 @@
                         android:id="@+id/addToCartButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Add to Cart"
+                        android:text="@string/add_to_cart"
+                        style="@style/Widget.AppCompat.Button.Colored"
                         android:layout_margin="8dp"/>
                     </LinearLayout>
 

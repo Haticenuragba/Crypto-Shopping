@@ -7,14 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        >
+        android:layout_height="?attr/actionBarSize" >
 
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+
+            android:onClick="returnHomePage"
+            android:src="@mipmap/ic_mylogo" />
     </android.support.v7.widget.Toolbar>
 
 
 <FrameLayout
+    android:layout_marginTop="?attr/actionBarSize"
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

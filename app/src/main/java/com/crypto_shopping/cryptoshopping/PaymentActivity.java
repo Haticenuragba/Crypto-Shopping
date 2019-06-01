@@ -65,6 +65,8 @@ public class PaymentActivity extends AppCompatActivity {
     private long totalAmount;
     private String transactionID;
     private String orderInfo;
+    private TextView xrpToSend;
+    private Button copy;
 
     String fullAddress;
 
@@ -77,6 +79,7 @@ public class PaymentActivity extends AppCompatActivity {
         totalAmount = intent.getLongExtra("AMOUNT_TO_PAY", 999000000);
         depositAddress.setText(intent.getStringExtra("DEPOSIT_ADDRESS"));
         depositTag.setText(intent.getStringExtra("DEPOSIT_TAG"));
+        xrpToSend.setText(Long.toString(totalAmount) + " XRP");
         fullAddress = intent.getStringExtra("SHIPPING_ADDRESS");
 
 
@@ -93,7 +96,9 @@ public class PaymentActivity extends AppCompatActivity {
         depositTag = findViewById(R.id.depositTag);
         copy1 = findViewById(R.id.copy1);
         copy2 = findViewById(R.id.copy2);
+        copy = findViewById(R.id.copy);
         completePayment = findViewById(R.id.completePayment);
+        xrpToSend = findViewById(R.id.xrpToSend);
 
         copy1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +122,17 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
 
+        copy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("price", xrpToSend.getText());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getApplicationContext(), "XRP amount is copied to clipboard.", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         completePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,5 +151,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void returnHomePageFromPayment(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -57,9 +57,10 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="TextView"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.449"
+            app:layout_constraintHorizontal_bias="0.045"
             app:layout_constraintStart_toEndOf="@+id/finalCartImage"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.124" />

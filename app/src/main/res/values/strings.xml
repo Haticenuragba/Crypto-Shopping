@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Crypto Shopping</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -28,9 +27,19 @@
     <string name="add_address">Add Address</string>
     <string name="address_title">Address Title</string>
     <string name="full_address">Full Address</string>
-    <string name="f_n_sh_payment">Fınısh Payment</string>
     <string name="my_addresses">My Addresses</string>
     <string name="add_new_address">Add New Address</string>
     <string name="select_address">Select an Address</string>
     <string name="f_n_sh_payment">Fınısh Payment</string>
+    <string name="in_order_to_complete_your_order_you_should_send_specified_amount_of_xrp_to_specified_deposit_address_with_specified_tag_in_7_days">In order to complete your order, you should send specified amount of XRP to specified deposit address with specified tag in 7 days. You can check deposit address, tag and your payment status from your orders when you need.</string>
+    <string name="xrp_to_send">XRP to Send</string>
+    <string name="you_don_t_have_any_product_nin_your_cart_yet">You don\'t have any product in your cart yet.</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="orders">Orders</string>
+    <string name="your_orders">YOUR ORDERS</string>
+    <string name="proceeded_products">Proceeded Products</string>
+    <string name="date">Date</string>
+    <string name="payment_status">Payment Status</string>
+    <string name="back_to_my_orders">BACK TO MY ORDERS</string>
+    <string name="appname">Crypto Shopping</string>
 </resources>

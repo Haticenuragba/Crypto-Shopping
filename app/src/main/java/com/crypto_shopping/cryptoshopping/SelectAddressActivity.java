@@ -122,6 +122,11 @@ public class SelectAddressActivity extends AppCompatActivity {
         firebaseRecyclerAdapter.notifyDataSetChanged();
     }
 
+    public void returnHomePageFromAddresses(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
+
 }
 
 

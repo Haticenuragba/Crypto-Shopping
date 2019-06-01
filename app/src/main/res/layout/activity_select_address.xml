@@ -9,11 +9,28 @@
     >
 
 
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".SelectAddressActivity"
     android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_cs_logo"
+            android:onClick="returnHomePageFromAddresses"
+
+            />
+    </android.support.v7.widget.Toolbar>
 
 
     <LinearLayout

@@ -1,5 +1,8 @@
 package com.crypto_shopping.cryptoshopping;
 import android.app.ProgressDialog;
+import java.util.Calendar;
+import java.util.Date;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -49,6 +52,7 @@ public class FinishPaymentActivity extends AppCompatActivity {
     private String transactionID;
 
 
+    private String currentTime;
 
 
 
@@ -57,6 +61,7 @@ public class FinishPaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_payment);
         mRecyclerView=findViewById(R.id.cartRecyclerView);
+        currentTime = Calendar.getInstance().getTime().toString();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         totalPriceText = findViewById(R.id.totalPrice);
         proceedToCheckOutButton = findViewById(R.id.proceedToCheckOut);
@@ -70,6 +75,7 @@ public class FinishPaymentActivity extends AppCompatActivity {
 
         LoadData(URL_API);
 
+        totalPriceText.setText(Long.toString(totalAmount) + " XRP");
 
         proceedToCheckOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +103,11 @@ public class FinishPaymentActivity extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("orderInfo").setValue(orderInfo);
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("transactionID").setValue(transactionID);
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("fullAddress").setValue(fullAddress);
+                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("depositAddress").setValue(depositAddress);
+                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("depositTag").setValue(depositTag);
+                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("totalAmount").setValue(totalAmount);
+                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("date").setValue(currentTime);
+
                         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").removeValue();
 
                         Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
@@ -104,6 +115,7 @@ public class FinishPaymentActivity extends AppCompatActivity {
                         intent.putExtra("SHIPPING_ADDRESS", fullAddress);
                         intent.putExtra("DEPOSIT_ADDRESS", depositAddress);
                         intent.putExtra("DEPOSIT_TAG", depositTag);
+                        totalPriceText.setText("0");
                         startActivity(intent);
 
 
@@ -126,7 +138,7 @@ public class FinishPaymentActivity extends AppCompatActivity {
             }
         });
 
-        totalPriceText.setText(Long.toString(totalAmount));
+
     }
 
 
@@ -195,5 +207,8 @@ public class FinishPaymentActivity extends AppCompatActivity {
 
 
 
-
+    public void returnHomePageFromFinishPayment(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
 }

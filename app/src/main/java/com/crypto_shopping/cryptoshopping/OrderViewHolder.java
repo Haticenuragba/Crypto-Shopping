@@ -1,6 +1,7 @@
 package com.crypto_shopping.cryptoshopping;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
@@ -33,10 +34,21 @@ public class OrderViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setDetails(final Context mContext, Orders order) {
+    public void setDetails(final Context mContext, final Orders order) {
 
-        orderInfoView.setText(order.getOrderInfo());
+        orderInfoView.setText(order.getTotalAmount()+" XRP");
         orderStatus.setText(order.getPaymentStatus());
+
+        orderView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent productDetailIntent = new Intent(mContext, OrderInfo.class);
+                productDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                productDetailIntent.putExtra("ORDER", order);
+                mContext.startActivity(productDetailIntent);
+            }
+        });
 
     }
 

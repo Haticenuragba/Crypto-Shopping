@@ -13,12 +13,11 @@
         android:layout_height="?attr/actionBarSize" >
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_cs_logo"
-            android:onClick="returnHomePage"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
 
-            />
+            android:onClick="returnHomePage"
+            android:src="@mipmap/ic_mylogo" />
     </android.support.v7.widget.Toolbar>
 
 

@@ -19,7 +19,7 @@
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account"
-        android:title="@string/account" />
+        android:title="@string/orders" />
 
 
 

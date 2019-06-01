@@ -61,7 +61,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         }
 
         productTitle.setText(product.getTitle());
-        productPrice.setText(Integer.toString(product.getPrice())+" ADA");
+        productPrice.setText(Integer.toString(product.getPrice())+" XRP");
         Picasso.get().load(product.getImage()).into(productImage);
 
 

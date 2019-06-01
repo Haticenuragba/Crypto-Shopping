@@ -45,6 +45,7 @@ public class AccountFragment extends Fragment {
 
         mRecyclerView=getActivity().findViewById(R.id.ordersRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+
     }
 
     public void LoadData(String URL_DATA){

@@ -9,11 +9,28 @@
     >
 
 
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".SelectAddressActivity"
     android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_cs_logo"
+            android:onClick="returnHomePageFromAddresses"
+
+            />
+    </android.support.v7.widget.Toolbar>
 
 
     <LinearLayout
@@ -21,6 +38,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/frameLayout"
         android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_margin="8dp"
+            android:text="@string/select_address"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/addressRecyclerView"
@@ -30,13 +62,29 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
-        android:background="@color/colorAccent"
        />
+
+        </LinearLayout>
+
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_margin="8dp"
+        android:text="@string/add_new_address"/>
     <EditText
         android:id="@+id/titleEdit"
         android:layout_width="match_parent"
@@ -74,7 +122,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:text="@string/add_address"
+        style="@style/Widget.AppCompat.Button.Colored"
        />
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+
 
 
 

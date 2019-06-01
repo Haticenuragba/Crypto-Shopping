@@ -24,9 +24,9 @@
         android:layout_height="?attr/actionBarSize" >
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/ic_cs_logo"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:src="@mipmap/ic_mylogo"
             android:onClick="returnHomePageFromPayment"
 
             />

@@ -21,7 +21,10 @@ import com.android.volley.toolbox.Volley;
 import com.crypto_shopping.cryptoshopping.Objects.Orders;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,8 +39,8 @@ public class AccountFragment extends Fragment {
     }
 
     RecyclerView mRecyclerView;
-    private String paymentStatus;
     private  String transactionID;
+    private  int paymentStatus;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -59,10 +62,38 @@ public class AccountFragment extends Fragment {
                     JSONObject jsonobject=new JSONObject(response).getJSONObject("data");
                     transactionID = jsonobject.getString("transaction_id");
                     Boolean isCompleted = jsonobject.getBoolean("is_completed");
-                    Log.v("COMPP",Boolean.toString(isCompleted));
+
+                    if(isCompleted){
+                        paymentStatus = 2;
+                    }
+                    else{
+                        paymentStatus = 1;
+                    }
 
 
-                        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("paymentStatus").setValue(isCompleted);
+
+                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("paymentStatus").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.exists()) {
+                                if (dataSnapshot.getValue().toString().equals("3")) {
+                                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("paymentStatus").setValue(3);
+                                } else {
+                                    FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("paymentStatus").setValue(paymentStatus);
+
+                                }
+                            } else{
+                                FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Orders").child(transactionID).child("paymentStatus").setValue(paymentStatus);
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
 
 

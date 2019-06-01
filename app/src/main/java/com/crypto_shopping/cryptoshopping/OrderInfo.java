@@ -164,7 +164,7 @@ public class OrderInfo extends AppCompatActivity {
 
 
                 onBackPressed();
-                Toast.makeText(getApplicationContext(), "You can check your order from orders page.", Toast.LENGTH_SHORT).show();
+
 
 
 

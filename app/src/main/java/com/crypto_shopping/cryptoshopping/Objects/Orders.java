@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Orders implements Serializable {
     private String orderInfo;
     private String transactionID;
-    private boolean paymentStatus;
+    private int paymentStatus;
     private String date;
 
     public String getDate() {
@@ -58,16 +58,19 @@ public class Orders implements Serializable {
 
     public String getPaymentStatus() {
 
-        if(paymentStatus){
-            return "Payment is completed, your order is preparing";
+        if(paymentStatus == 1){
+            return "Waiting for payment";
 
         }
+        else if(paymentStatus == 2){
+            return "Payment is completed, your order is preparing";
+        }
         else{
-            return "Waiting for payment";
+            return "Your order is sent by cargo";
         }
     }
 
-    public void setPaymentStatus(boolean paymentStatus) {
+    public void setPaymentStatus(int paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
 

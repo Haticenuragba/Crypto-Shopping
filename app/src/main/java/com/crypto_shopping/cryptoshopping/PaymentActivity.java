@@ -79,7 +79,7 @@ public class PaymentActivity extends AppCompatActivity {
         totalAmount = intent.getLongExtra("AMOUNT_TO_PAY", 999000000);
         depositAddress.setText(intent.getStringExtra("DEPOSIT_ADDRESS"));
         depositTag.setText(intent.getStringExtra("DEPOSIT_TAG"));
-        xrpToSend.setText(Long.toString(totalAmount));
+        xrpToSend.setText(Long.toString(totalAmount) + " XRP");
         fullAddress = intent.getStringExtra("SHIPPING_ADDRESS");
 
 

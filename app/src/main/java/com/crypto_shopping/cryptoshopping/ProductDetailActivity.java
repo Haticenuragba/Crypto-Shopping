@@ -67,7 +67,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         productTitle.setText(product.getTitle());
         Picasso.get().load(product.getImage()).into(productImage);
-        productPrice.setText(Integer.toString(product.getPrice()));
+        productPrice.setText(Integer.toString(product.getPrice()) + " XRP");
         productDescription.setText(product.getDesc());
 
         Spinner dropdown = findViewById(R.id.amountSpinner);
@@ -152,6 +152,11 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void returnHomePageFromDetail(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
 

@@ -75,7 +75,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
                 if(product.getProductID() != null) {
                     selectedAmount = position + 1;
                     product.setAmount(selectedAmount);
-                    productPrice.setText(Integer.toString(product.getPrice() * product.getAmount()) + " ADA");
+                    productPrice.setText(Integer.toString(product.getPrice() * product.getAmount()) + " XRP");
 
                     Log.v("productID", product.getProductID());
                     FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").child(product.getProductID()).child("amount").setValue(selectedAmount);
@@ -85,7 +85,7 @@ public class CartViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 selectedAmount = product.getAmount();
-                productPrice.setText(Integer.toString(product.getPrice()*product.getAmount())+" ADA");
+                productPrice.setText(Integer.toString(product.getPrice()*product.getAmount())+" XRP");
             }
 
 

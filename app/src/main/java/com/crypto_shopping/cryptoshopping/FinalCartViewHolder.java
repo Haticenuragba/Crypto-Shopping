@@ -58,7 +58,7 @@ public class FinalCartViewHolder extends RecyclerView.ViewHolder {
 
 
         productTitle.setText(product.getTitle());
-        productPrice.setText(Integer.toString(product.getPrice() * product.getAmount()) + " ADA");
+        productPrice.setText(Integer.toString(product.getPrice() * product.getAmount()) + " XRP");
         amountText.setText(Integer.toString(product.getAmount()));
 
         Picasso.get().load(product.getImage()).into(productImage);

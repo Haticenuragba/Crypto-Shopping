@@ -25,9 +25,14 @@ import static com.crypto_shopping.cryptoshopping.MainActivity.favourites;
 
 public class CartFragment extends Fragment {
 
+    LayoutInflater inflater;
+    ViewGroup container;
+
     @Nullable
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.inflater = inflater;
+        this.container = container;
         return inflater.inflate(R.layout.fragment_cart, container, false);
 
     }
@@ -61,37 +66,54 @@ public class CartFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").addValueEventListener(new ValueEventListener() {
 
 
 
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                totalAmount = 0;
-                if(dataSnapshot.exists()){
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+            FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart").addValueEventListener(new ValueEventListener() {
 
-                        if(snapshot.child("amount").getValue()!=null && snapshot.child("price").getValue()!=null){
 
-                            totalAmount += (long)snapshot.child("amount").getValue() * (long)snapshot.child("price").getValue() ;
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    totalAmount = 0;
+                    if (dataSnapshot.exists()) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                            if (snapshot.child("amount").getValue() != null && snapshot.child("price").getValue() != null) {
+
+                                totalAmount += (long) snapshot.child("amount").getValue() * (long) snapshot.child("price").getValue();
+
+                            }
 
                         }
 
+
+
+
+                        totalPriceText.setText(Long.toString(totalAmount) + " XRP");
                     }
-                    totalPriceText.setText(Long.toString(totalAmount));
+                    else{
+                        if(getActivity()!=null) {
+                            LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(getActivity().getApplicationContext().LAYOUT_INFLATER_SERVICE);
+                            View mainView = inflater.inflate(R.layout.fragment_empty_cart, null);
+                            ViewGroup rootView = (ViewGroup) getView();
+                            rootView.removeAllViews();
+                            rootView.addView(mainView);
+                        }
+
+
+                    }
+
+
+
+
                 }
 
-                Log.v("DEDEDE",Long.toString(totalAmount));
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
 
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
-
-            FirebaseRecyclerAdapter<ProductInCart,CartViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ProductInCart, CartViewHolder>(
+            FirebaseRecyclerAdapter<ProductInCart, CartViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<ProductInCart, CartViewHolder>(
 
                     ProductInCart.class,
                     R.layout.product_in_cart_row,
@@ -103,7 +125,6 @@ public class CartFragment extends Fragment {
 
                 }
             };
-
 
 
             mRecyclerView.setAdapter(firebaseRecyclerAdapter);

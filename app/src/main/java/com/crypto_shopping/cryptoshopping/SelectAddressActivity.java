@@ -104,7 +104,6 @@ public class SelectAddressActivity extends AppCompatActivity {
             @Override
             protected void populateViewHolder(AddressViewHolder viewHolder, Address address, int position) {
 
-                Log.v("sssss", address.getTitle());
 
                 viewHolder.setDetails(getApplicationContext(), address, totalAmount);
 
@@ -121,6 +120,11 @@ public class SelectAddressActivity extends AppCompatActivity {
 
         addressRecyclerView.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.notifyDataSetChanged();
+    }
+
+    public void returnHomePageFromAddresses(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
 }

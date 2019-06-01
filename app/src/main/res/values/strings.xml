@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Crypto Shopping</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -37,4 +36,10 @@
     <string name="you_don_t_have_any_product_nin_your_cart_yet">You don\'t have any product in your cart yet.</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="orders">Orders</string>
+    <string name="your_orders">YOUR ORDERS</string>
+    <string name="proceeded_products">Proceeded Products</string>
+    <string name="date">Date</string>
+    <string name="payment_status">Payment Status</string>
+    <string name="back_to_my_orders">BACK TO MY ORDERS</string>
+    <string name="appname">Crypto Shopping</string>
 </resources>
